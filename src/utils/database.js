@@ -5,11 +5,16 @@ let db = null;
 export const initDB = async () => {
     if (db) return db;
 
-    const SQL = await initSqlJs({
-        locateFile: file => `https://sql.js.org/dist/${file}`
-    });
+    try {
+        const SQL = await initSqlJs({
+            locateFile: file => `/trade_dashboard/${file}`
+        });
 
-    db = new SQL.Database();
+        db = new SQL.Database();
+    } catch (error) {
+        console.error('Failed to initialize SQL.js:', error);
+        throw new Error('Database initialization failed');
+    }
 
     // Create tables
     createTables();
