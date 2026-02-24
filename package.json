@@ -2,7 +2,7 @@
     "name": "trade-dashboard",
     "version": "1.0.0",
     "description": "Trade Dashboard for Pacific Islands Data",
-    "homepage": "https://yjulio.github.io/trade_dashboard",
+    "homepage": "https://vbos-dashboards.github.io/imts",
     "private": true,
     "type": "module",
     "scripts": {
