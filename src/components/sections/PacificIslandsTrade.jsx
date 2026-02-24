@@ -14,10 +14,16 @@ const PacificIslandsTrade = ({ data }) => {
         balance: item.balance
     }));
 
+    const totalBalance = data.reduce((sum, item) => sum + item.balance, 0);
+
     return (
         <div className="section-card">
             <h2 className="section-title">3. Trade Balance of Pacific Islands</h2>
             <p className="section-subtitle">(Excluding Melanesian Islands, Australia and New Zealand)</p>
+            <p className="section-subtitle">Total Trade Balance: VT {totalBalance.toLocaleString()} Million</p>
+            <p className="section-subtitle" style={{ fontSize: '0.9em', fontStyle: 'italic' }}>
+                Driven by exports of Kava to Kiribati (VT 89M) and Frozen Albacore Tuna to American Samoa (VT 12M)
+            </p>
 
             <div className="chart-container">
                 <ResponsiveContainer width="100%" height={350}>
@@ -27,9 +33,9 @@ const PacificIslandsTrade = ({ data }) => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="exports" fill="#00BCD4" name="Exports (M USD)" />
-                        <Bar dataKey="imports" fill="#FF9800" name="Imports (M USD)" />
-                        <Bar dataKey="balance" fill="#9C27B0" name="Balance (M USD)" />
+                        <Bar dataKey="exports" fill="#00BCD4" name="Exports (VT Million)" />
+                        <Bar dataKey="imports" fill="#FF9800" name="Imports (VT Million)" />
+                        <Bar dataKey="balance" fill="#9C27B0" name="Balance (VT Million)" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
@@ -39,9 +45,10 @@ const PacificIslandsTrade = ({ data }) => {
                     <thead>
                         <tr>
                             <th>Country</th>
-                            <th>Exports (M USD)</th>
-                            <th>Imports (M USD)</th>
-                            <th>Balance (M USD)</th>
+                            <th>Exports (VT Million)</th>
+                            <th>Imports (VT Million)</th>
+                            <th>Balance (VT Million)</th>
+                            <th>Major Trade Items</th>
                             <th>Year</th>
                         </tr>
                     </thead>
@@ -49,10 +56,13 @@ const PacificIslandsTrade = ({ data }) => {
                         {data.map((item, idx) => (
                             <tr key={idx}>
                                 <td><strong>{item.country}</strong></td>
-                                <td className="number positive">{item.exports.toFixed(2)}</td>
-                                <td className="number negative">{item.imports.toFixed(2)}</td>
+                                <td className="number positive">{item.exports.toLocaleString()}</td>
+                                <td className="number negative">{item.imports.toLocaleString()}</td>
                                 <td className={`number ${item.balance >= 0 ? 'positive' : 'negative'}`}>
-                                    {item.balance.toFixed(2)}
+                                    {item.balance.toLocaleString()}
+                                </td>
+                                <td style={{ fontSize: '0.85em' }}>
+                                    {item.major_exports || item.major_imports || 'Various'}
                                 </td>
                                 <td>{item.year}</td>
                             </tr>

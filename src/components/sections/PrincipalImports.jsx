@@ -17,7 +17,8 @@ const PrincipalImports = ({ data }) => {
 
     return (
         <div className="section-card">
-            <h2 className="section-title">7. Principal Imports</h2>
+            <h2 className="section-title">7. Food Imports Targeted by DARD (ENV 1.3.1)</h2>
+            <p className="section-subtitle">Total Value: VT 9 Million (Products that can be produced domestically)</p>
 
             <div className="charts-grid">
                 <div className="chart-container">

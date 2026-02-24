@@ -17,7 +17,8 @@ const PrincipalExports = ({ data }) => {
 
     return (
         <div className="section-card">
-            <h2 className="section-title">5. Principal Exports</h2>
+            <h2 className="section-title">5. Principal Exports - Major Commodities (ECO 1.7.1)</h2>
+            <p className="section-subtitle">Total Production Value: VT 699 Million</p>
 
             <div className="charts-grid">
                 <div className="chart-container">

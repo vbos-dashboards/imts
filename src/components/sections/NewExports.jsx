@@ -15,19 +15,18 @@ const NewExports = ({ data }) => {
 
     return (
         <div className="section-card">
-            <h2 className="section-title">6. Top 5 New Major Exports</h2>
+            <h2 className="section-title">6. Processed Export Commodities (ECO 4.3.2)</h2>
+            <p className="section-subtitle">Total Value of Processed Exports: VT 472 Million (Ratio: 2)</p>
 
             <div className="chart-container">
                 <ResponsiveContainer width="100%" height={350}>
                     <BarChart data={chartData}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} />
-                        <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-                        <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+                        <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar yAxisId="left" dataKey="value" fill="#667eea" name="Value (M USD)" />
-                        <Bar yAxisId="right" dataKey="growth" fill="#4CAF50" name="Growth Rate (%)" />
+                        <Bar dataKey="value" fill="#667eea" name="Value (VT Million)" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
@@ -37,8 +36,7 @@ const NewExports = ({ data }) => {
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>Value (M USD)</th>
-                            <th>Growth Rate (%)</th>
+                            <th>Value (VT Million)</th>
                             <th>Year</th>
                         </tr>
                     </thead>
@@ -47,9 +45,6 @@ const NewExports = ({ data }) => {
                             <tr key={idx}>
                                 <td><strong>{item.product}</strong></td>
                                 <td className="number">{item.value.toFixed(2)}</td>
-                                <td className="number positive">
-                                    <span className="growth-badge">+{item.growth_rate.toFixed(1)}%</span>
-                                </td>
                                 <td>{item.year}</td>
                             </tr>
                         ))}
